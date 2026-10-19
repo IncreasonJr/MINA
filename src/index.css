@@ -5,41 +5,98 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
   }
 
-  /* Custom scrollbar for pleasant aesthetic */
+  /* Custom retro scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #FFF8F0;
+    background: #FAF6EE;
+    border-left: 2px solid #141414;
   }
   ::-webkit-scrollbar-thumb {
-    background: #E5D5C5;
+    background: #FF5722;
+    border: 2px solid #141414;
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #FF6B35;
+    background: #E64A19;
   }
 }
 
-/* Animations */
-@keyframes cartPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.35) rotate(-6deg); }
+/* Tactile button active push state */
+.btn-tactile {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-.animate-cart-bounce {
-  animation: cartPulse 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.btn-tactile:active {
+  transform: translate(3px, 3px) !important;
+  box-shadow: 1px 1px 0px 0px #141414 !important;
 }
 
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+/* Marquee scrolling ticker */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
-.animate-float {
-  animation: floatSlow 4s ease-in-out infinite;
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Rubber stamp badge rotation & text effect */
+.rubber-stamp {
+  mask-image: radial-gradient(rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0.5) 100%);
+  border: 3px dashed currentColor;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-family: 'Righteous', cursive;
+}
+
+/* Vintage receipt perforated top edge */
+.receipt-edge-top {
+  position: relative;
+}
+
+.receipt-edge-top::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: radial-gradient(circle, transparent, transparent 50%, #ffffff 50%, #ffffff 100%);
+  background-size: 16px 16px;
+}
+
+/* Subtle diner checkered / grid texture */
+.bg-retro-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(20, 20, 20, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 20, 20, 0.05) 1px, transparent 1px);
+}
+
+.bg-retro-dots {
+  background-image: radial-gradient(rgba(20, 20, 20, 0.08) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+/* Flame wiggle */
+@keyframes flameWiggle {
+  0%, 100% { transform: rotate(-3deg) scale(1); }
+  50% { transform: rotate(3deg) scale(1.1); }
+}
+
+.animate-sizzle {
+  animation: flameWiggle 1.5s ease-in-out infinite;
 }

@@ -36,23 +36,23 @@ export const StickyOrderButton: React.FC = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.9 }}
           transition={{ type: 'spring', damping: 20, stiffness: 260 }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 p-1.5 bg-savory-charcoal/95 backdrop-blur-md rounded-full shadow-2xl border border-stone-800"
+          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 p-1.5 bg-[#141414] rounded-full shadow-brutal-lg border-3 border-[#141414]"
         >
           {location.pathname !== '/menu' ? (
             <Link
               to="/menu"
-              className="flex items-center gap-2.5 px-6 py-3 rounded-full bg-savory-orange text-white font-extrabold text-sm shadow-orange hover:bg-savory-orange-hover transition-colors"
+              className="flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#FF5722] text-white font-display text-sm tracking-wider uppercase border-2 border-[#141414] shadow-brutal-sm hover:bg-[#E64A19] transition-colors btn-tactile"
             >
-              <Utensils className="w-4 h-4" />
+              <Utensils className="w-4 h-4 stroke-[3]" />
               <span>Order Now</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              <ArrowRight className="w-4 h-4 stroke-[3]" />
             </Link>
           ) : (
             <button
               onClick={() => setIsCartOpen(true)}
-              className="flex items-center gap-2.5 px-6 py-3 rounded-full bg-savory-orange text-white font-extrabold text-sm shadow-orange hover:bg-savory-orange-hover transition-colors"
+              className="flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#FFB300] text-[#141414] font-display text-sm tracking-wider uppercase border-2 border-[#141414] shadow-brutal-sm hover:bg-[#FFA000] transition-colors btn-tactile"
             >
-              <ShoppingBag className="w-4 h-4" />
+              <ShoppingBag className="w-4 h-4 stroke-[2.5]" />
               <span>View Bag ({itemCount})</span>
             </button>
           )}
@@ -60,11 +60,11 @@ export const StickyOrderButton: React.FC = () => {
           {itemCount > 0 && location.pathname !== '/menu' && (
             <button
               onClick={() => setIsCartOpen(true)}
-              className="p-3 rounded-full bg-stone-800 hover:bg-stone-700 text-white transition-colors relative"
+              className="p-3 rounded-full bg-white text-[#141414] border-2 border-[#141414] hover:bg-[#FFB300] transition-colors relative btn-tactile"
               aria-label="View bag"
             >
-              <ShoppingBag className="w-4 h-4 text-savory-orange" />
-              <span className="absolute -top-1 -right-1 bg-savory-orange text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">
+              <ShoppingBag className="w-4 h-4 text-[#FF5722] stroke-[2.5]" />
+              <span className="absolute -top-1.5 -right-1.5 bg-[#FF5722] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#141414]">
                 {itemCount}
               </span>
             </button>

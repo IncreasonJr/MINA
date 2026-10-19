@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag } from 'lucide-react';
+import { Tag, Flame } from 'lucide-react';
 import { MenuGrid } from '../components/MenuGrid';
 import { StickyOrderButton } from '../components/StickyOrderButton';
 import { useCart } from '../context/CartContext';
@@ -8,54 +8,55 @@ export const Menu: React.FC = () => {
   const { applyCoupon, appliedCoupon } = useCart();
 
   return (
-    <div className="min-h-screen bg-savory-cream pb-24">
+    <div className="min-h-screen bg-[#FAF6EE] pb-24">
       {/* Page Title & Promo Bar */}
-      <section className="bg-white border-b border-savory-border/70 py-10 sm:py-14">
+      <section className="bg-white border-b-3 border-[#141414] py-12 sm:py-16 bg-retro-dots">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-savory-orange bg-savory-orange-light px-3 py-1 rounded-full">
-              Made Fresh Daily
-            </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-savory-charcoal mt-3 tracking-tight">
-              Our Crave-Worthy Menu
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-[#FF5722] text-white border-2 border-[#141414] shadow-brutal-sm font-display text-xs uppercase tracking-widest mb-3">
+              <Flame className="w-3.5 h-3.5 fill-white" />
+              <span>Flat-Top Fresh Everyday</span>
+            </div>
+            <h1 className="font-display text-4xl sm:text-6xl text-[#141414] tracking-tight uppercase">
+              The Sizzle Menu
             </h1>
-            <p className="mt-3 text-stone-600 text-sm sm:text-base leading-relaxed">
+            <p className="mt-3 text-stone-700 text-sm sm:text-base font-bold leading-relaxed">
               Every burger is smashed with precision, sides fried crispy to golden perfection, and shakes spun thick. Choose your favorites and customize every bite.
             </p>
           </div>
 
           {/* Promotional Banner with Click-to-Apply */}
-          <div className="mt-6 p-4 rounded-2xl bg-gradient-to-r from-savory-orange/10 via-amber-50 to-savory-orange/5 border border-savory-orange/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-savory-orange text-white flex items-center justify-center flex-shrink-0 shadow-sm">
-                <Tag className="w-5 h-5" />
+          <div className="mt-8 p-5 rounded-3xl bg-[#FAF6EE] border-3 border-[#141414] shadow-brutal flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFB300] border-2 border-[#141414] text-[#141414] flex items-center justify-center flex-shrink-0 shadow-brutal-sm">
+                <Tag className="w-6 h-6 stroke-[2.5]" />
               </div>
-              <div className="text-xs sm:text-sm text-stone-800">
-                <span className="font-extrabold text-savory-charcoal">
-                  Today's Promo Codes:
-                </span>{' '}
-                Use <strong className="text-savory-orange font-bold">FREEDEL</strong> for Free Delivery or{' '}
-                <strong className="text-savory-orange font-bold">SAVE10</strong> for 10% off subtotal.
+              <div className="text-xs sm:text-sm text-stone-900 font-bold">
+                <span className="font-display uppercase text-sm tracking-wide text-[#141414] block sm:inline mr-2">
+                  Today's Promo Perks:
+                </span>
+                Use <strong className="text-[#FF5722] font-black underline">FREEDEL</strong> for Free Delivery or{' '}
+                <strong className="text-[#FF5722] font-black underline">SAVE10</strong> for 10% off subtotal.
               </div>
             </div>
 
-            <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="flex items-center gap-2.5 flex-shrink-0">
               <button
                 onClick={() => applyCoupon('FREEDEL')}
-                className={`text-xs font-bold px-3 py-1.5 rounded-xl border transition-all ${
+                className={`text-xs font-display uppercase tracking-wider px-4 py-2.5 rounded-xl border-2 border-[#141414] transition-all btn-tactile ${
                   appliedCoupon?.code === 'FREEDEL'
-                    ? 'bg-savory-green text-white border-savory-green'
-                    : 'bg-white hover:bg-savory-orange hover:text-white text-stone-700 border-stone-200'
+                    ? 'bg-[#00C853] text-white shadow-brutal-sm'
+                    : 'bg-white hover:bg-[#FFB300] text-[#141414] shadow-brutal-sm'
                 }`}
               >
                 {appliedCoupon?.code === 'FREEDEL' ? 'FREEDEL Applied ✓' : 'Apply FREEDEL'}
               </button>
               <button
                 onClick={() => applyCoupon('SAVE10')}
-                className={`text-xs font-bold px-3 py-1.5 rounded-xl border transition-all ${
+                className={`text-xs font-display uppercase tracking-wider px-4 py-2.5 rounded-xl border-2 border-[#141414] transition-all btn-tactile ${
                   appliedCoupon?.code === 'SAVE10'
-                    ? 'bg-savory-green text-white border-savory-green'
-                    : 'bg-white hover:bg-savory-orange hover:text-white text-stone-700 border-stone-200'
+                    ? 'bg-[#00C853] text-white shadow-brutal-sm'
+                    : 'bg-white hover:bg-[#FFB300] text-[#141414] shadow-brutal-sm'
                 }`}
               >
                 {appliedCoupon?.code === 'SAVE10' ? 'SAVE10 Applied ✓' : 'Apply SAVE10'}
