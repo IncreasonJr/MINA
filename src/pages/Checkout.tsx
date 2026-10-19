@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useCart, CustomerDetails } from '../context/CartContext';
 import { CouponInput } from '../components/CouponInput';
+import { BarcodeSVG } from '../components/BrutalistSVGs';
 
 export const Checkout: React.FC = () => {
   const {
@@ -92,8 +93,8 @@ export const Checkout: React.FC = () => {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-[#FAF6EE] py-16 px-4">
-        <div className="max-w-md mx-auto bg-white rounded-3xl p-8 text-center border-4 border-[#141414] shadow-brutal-xl space-y-5">
+      <div className="min-h-screen bg-[#FAF6EE] py-20 px-4">
+        <div className="max-w-md mx-auto bg-white rounded-3xl p-10 text-center border-4 border-[#141414] shadow-brutal-xl space-y-6">
           <div className="w-20 h-20 rounded-3xl bg-[#FFF8E1] border-3 border-[#141414] text-[#141414] flex items-center justify-center mx-auto shadow-brutal">
             <ShoppingBag className="w-10 h-10 stroke-[2]" />
           </div>
@@ -115,10 +116,10 @@ export const Checkout: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF6EE] py-10 sm:py-16">
+    <div className="min-h-screen bg-[#FAF6EE] py-12 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back navigation & Title */}
-        <div className="mb-8">
+        <div className="mb-10">
           <Link
             to="/menu"
             className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#141414] hover:text-[#FF5722] mb-3 transition-colors"
@@ -135,11 +136,11 @@ export const Checkout: React.FC = () => {
         </div>
 
         <form onSubmit={handleSubmitOrder}>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Left Column: Form Details (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-8">
               {/* Delivery / Pickup Toggle Switch */}
-              <div className="bg-white rounded-3xl p-6 border-3 border-[#141414] shadow-brutal">
+              <div className="bg-white rounded-3xl p-7 border-3 border-[#141414] shadow-brutal">
                 <label className="block font-display text-sm uppercase tracking-wider text-[#141414] mb-3">
                   1. How Are You Feasting?
                 </label>
@@ -170,7 +171,7 @@ export const Checkout: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="mt-3 flex items-center gap-2 text-xs font-bold text-stone-600">
+                <div className="mt-4 flex items-center gap-2 text-xs font-bold text-stone-600">
                   <Clock className="w-4 h-4 text-[#FF5722]" />
                   {deliveryMode === 'delivery' ? (
                     <span>Delivered hot to your door in ~35 minutes</span>
@@ -181,13 +182,13 @@ export const Checkout: React.FC = () => {
               </div>
 
               {/* Customer Contact Info */}
-              <div className="bg-white rounded-3xl p-6 border-3 border-[#141414] shadow-brutal space-y-4">
+              <div className="bg-white rounded-3xl p-7 border-3 border-[#141414] shadow-brutal space-y-5">
                 <h3 className="font-display text-lg uppercase tracking-wide text-[#141414]">
                   2. Contact Details
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                    <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                       Full Name *
                     </label>
                     <input
@@ -200,7 +201,7 @@ export const Checkout: React.FC = () => {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                    <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                       Phone Number *
                     </label>
                     <input
@@ -215,7 +216,7 @@ export const Checkout: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                  <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                     Email Receipt (Optional)
                   </label>
                   <input
@@ -235,7 +236,7 @@ export const Checkout: React.FC = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="bg-white rounded-3xl p-6 border-3 border-[#141414] shadow-brutal space-y-4 overflow-hidden"
+                    className="bg-white rounded-3xl p-7 border-3 border-[#141414] shadow-brutal space-y-5 overflow-hidden"
                   >
                     <div className="flex items-center gap-2">
                       <MapPin className="w-5 h-5 text-[#FF5722]" />
@@ -246,7 +247,7 @@ export const Checkout: React.FC = () => {
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                        <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                           Street Address & Apt / Suite *
                         </label>
                         <input
@@ -259,9 +260,9 @@ export const Checkout: React.FC = () => {
                         />
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div>
-                          <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                          <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                             City & Zip Code
                           </label>
                           <input
@@ -273,7 +274,7 @@ export const Checkout: React.FC = () => {
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                          <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                             Driver Instructions
                           </label>
                           <input
@@ -291,7 +292,7 @@ export const Checkout: React.FC = () => {
               </AnimatePresence>
 
               {/* Mock Payment Card Section */}
-              <div className="bg-white rounded-3xl p-6 border-3 border-[#141414] shadow-brutal space-y-4">
+              <div className="bg-white rounded-3xl p-7 border-3 border-[#141414] shadow-brutal space-y-5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <CreditCard className="w-5 h-5 text-[#FF5722]" />
@@ -305,12 +306,12 @@ export const Checkout: React.FC = () => {
                 </div>
 
                 {/* Retro Graphic Card Mockup */}
-                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#141414] to-stone-900 border-2 border-[#141414] text-white shadow-brutal-sm space-y-3">
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-[#141414] to-stone-900 border-2 border-[#141414] text-white shadow-brutal-sm space-y-4">
                   <div className="flex justify-between items-center">
-                    <div className="w-9 h-7 rounded-md bg-[#FFB300] border border-amber-300"></div>
+                    <div className="w-10 h-7 rounded-md bg-[#FFB300] border border-amber-300"></div>
                     <span className="font-display text-sm tracking-widest text-[#FF5722]">SAVORY CARD</span>
                   </div>
-                  <div className="font-mono text-base tracking-widest text-stone-200">
+                  <div className="font-mono text-base sm:text-lg tracking-widest text-stone-200">
                     {cardNumber || '•••• •••• •••• ••••'}
                   </div>
                   <div className="flex justify-between items-center text-[10px] font-mono uppercase text-stone-400">
@@ -321,7 +322,7 @@ export const Checkout: React.FC = () => {
 
                 <div className="space-y-4 pt-2">
                   <div>
-                    <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                    <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                       Card Number
                     </label>
                     <input
@@ -334,9 +335,9 @@ export const Checkout: React.FC = () => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
                     <div>
-                      <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                      <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                         Expiry (MM/YY)
                       </label>
                       <input
@@ -349,7 +350,7 @@ export const Checkout: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                      <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                         CVV / CVC
                       </label>
                       <input
@@ -363,7 +364,7 @@ export const Checkout: React.FC = () => {
                       />
                     </div>
                     <div className="col-span-2 sm:col-span-1">
-                      <label className="block text-xs font-black uppercase text-stone-700 mb-1">
+                      <label className="block text-xs font-black uppercase text-stone-700 mb-1.5">
                         Card Name
                       </label>
                       <input
@@ -382,15 +383,15 @@ export const Checkout: React.FC = () => {
 
             {/* Right Column: Order Summary Guest Check (5 cols) */}
             <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
-              <div className="bg-[#FAF6EE] rounded-3xl p-6 border-4 border-[#141414] shadow-brutal-xl space-y-5">
-                <div className="flex items-center justify-between pb-3 border-b-3 border-[#141414]">
+              <div className="bg-[#FAF6EE] rounded-3xl p-7 border-4 border-[#141414] shadow-brutal-xl space-y-5">
+                <div className="flex items-center justify-between pb-3.5 border-b-3 border-[#141414]">
                   <div className="flex items-center gap-2">
                     <Receipt className="w-5 h-5 text-[#FF5722]" />
                     <h3 className="font-display text-xl uppercase tracking-wider text-[#141414]">
                       Guest Check
                     </h3>
                   </div>
-                  <span className="text-[11px] font-black uppercase bg-[#FFB300] border-2 border-[#141414] px-2 py-0.5 rounded-lg shadow-brutal-sm">
+                  <span className="text-[11px] font-black uppercase bg-[#FFB300] border-2 border-[#141414] px-2.5 py-0.5 rounded-lg shadow-brutal-sm">
                     {items.reduce((s, i) => s + i.quantity, 0)} Items
                   </span>
                 </div>
@@ -400,13 +401,13 @@ export const Checkout: React.FC = () => {
                   {items.map((cartItem) => (
                     <div
                       key={cartItem.cartId}
-                      className="flex items-center justify-between text-xs sm:text-sm p-2 rounded-xl bg-white border-2 border-[#141414] shadow-brutal-sm"
+                      className="flex items-center justify-between text-xs sm:text-sm p-2.5 rounded-xl bg-white border-2 border-[#141414] shadow-brutal-sm"
                     >
-                      <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="flex items-center gap-3 min-w-0">
                         <img
                           src={cartItem.item.image}
                           alt={cartItem.item.name}
-                          className="w-11 h-11 rounded-lg object-cover border border-[#141414] flex-shrink-0"
+                          className="w-12 h-12 rounded-lg object-cover border border-[#141414] flex-shrink-0"
                         />
                         <div className="truncate">
                           <p className="font-display uppercase text-xs sm:text-sm text-[#141414] truncate">
@@ -432,7 +433,7 @@ export const Checkout: React.FC = () => {
                 </div>
 
                 {/* Pricing Breakdown */}
-                <div className="space-y-2 pt-3 border-t-3 border-[#141414] text-xs sm:text-sm font-bold text-stone-700">
+                <div className="space-y-2.5 pt-3 border-t-3 border-[#141414] text-xs sm:text-sm font-bold text-stone-700">
                   <div className="flex justify-between">
                     <span className="uppercase">Subtotal</span>
                     <span className="font-display text-base text-[#141414]">
@@ -473,6 +474,11 @@ export const Checkout: React.FC = () => {
                       ${total.toFixed(2)}
                     </span>
                   </div>
+                </div>
+
+                {/* Vector Barcode on Guest Check */}
+                <div className="flex justify-center pt-1 opacity-70">
+                  <BarcodeSVG className="h-6" />
                 </div>
 
                 {/* Error Banner */}

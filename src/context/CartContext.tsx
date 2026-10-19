@@ -201,7 +201,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     triggerCartBounce();
-    triggerToast(`Added ${quantity > 1 ? `${quantity}x ` : ''}"${item.name}" to cart! 🍔`);
+    triggerToast(`Added ${quantity > 1 ? `${quantity}x ` : ''}"${item.name}" to order bag!`);
   };
 
   const updateQuantity = (cartId: string, delta: number) => {
@@ -244,7 +244,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         label: 'Free Delivery Applied ($3.99 OFF)',
         type: 'free_delivery',
       });
-      triggerToast('Coupon FREEDEL applied: Free Delivery! 🎉');
+      triggerToast('Coupon FREEDEL applied: Free Delivery activated');
       return true;
     } else if (code === 'SAVE10') {
       setAppliedCoupon({
@@ -253,7 +253,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         type: 'percentage',
         discountPercent: 10,
       });
-      triggerToast('Coupon SAVE10 applied: 10% off subtotal! 🎉');
+      triggerToast('Coupon SAVE10 applied: 10% discount subtracted');
       return true;
     } else {
       setCouponError("Invalid coupon code. Try 'FREEDEL' or 'SAVE10'.");

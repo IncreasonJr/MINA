@@ -16,6 +16,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { BarcodeSVG, StarburstBadge } from '../components/BrutalistSVGs';
 
 export const Confirmation: React.FC = () => {
   const { lastOrder } = useCart();
@@ -89,18 +90,18 @@ export const Confirmation: React.FC = () => {
   const isDelivery = order.deliveryMode === 'delivery';
 
   return (
-    <div className="min-h-screen bg-[#FAF6EE] py-12 sm:py-20 bg-retro-dots">
+    <div className="min-h-screen bg-[#FAF6EE] py-16 sm:py-24 bg-retro-dots">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Success Header Card with Retro Ticket Border */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative bg-white rounded-3xl p-8 sm:p-12 text-center border-4 border-[#141414] shadow-brutal-xl space-y-6 overflow-hidden"
+          className="relative bg-white rounded-3xl p-8 sm:p-14 text-center border-4 border-[#141414] shadow-brutal-xl space-y-7 overflow-hidden"
         >
-          {/* Stamped Paid Badge */}
-          <div className="absolute top-6 right-6 -rotate-12 border-3 border-dashed border-[#00C853] text-[#00C853] px-3 py-1 rounded-xl font-display text-sm uppercase tracking-widest pointer-events-none">
-            ★ SIZZLING & CONFIRMED ★
+          {/* Stamped Paid Badge - Starburst vector badge */}
+          <div className="absolute top-6 right-6 hidden sm:block pointer-events-none">
+            <StarburstBadge text="PAID" subtext="SIZZLING" bg="#00C853" textColor="#FFFFFF" className="w-20 h-20 rotate-12" />
           </div>
 
           {/* Animated Green Checkmark Ring */}
@@ -120,8 +121,8 @@ export const Confirmation: React.FC = () => {
             </motion.div>
           </div>
 
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-[#FFB300] text-[#141414] border-2 border-[#141414] shadow-brutal-sm text-xs font-black uppercase tracking-wider">
+          <div className="space-y-2.5">
+            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#FFB300] text-[#141414] border-2 border-[#141414] shadow-brutal-sm text-xs font-black uppercase tracking-wider">
               <Sparkles className="w-4 h-4" />
               <span>Ticket Sent to Grill Master</span>
             </div>
@@ -134,9 +135,9 @@ export const Confirmation: React.FC = () => {
           </div>
 
           {/* Key Order Meta Badges */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t-3 border-[#141414]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-4 border-t-3 border-[#141414]">
             {/* Order Number */}
-            <div className="p-4 rounded-2xl bg-[#FAF6EE] border-2 border-[#141414] shadow-brutal-sm flex items-center gap-3.5 text-left">
+            <div className="p-5 rounded-2xl bg-[#FAF6EE] border-2 border-[#141414] shadow-brutal-sm flex items-center gap-4 text-left">
               <div className="w-12 h-12 rounded-xl bg-[#141414] text-white flex items-center justify-center font-black">
                 <Receipt className="w-6 h-6 stroke-[2.5]" />
               </div>
@@ -151,7 +152,7 @@ export const Confirmation: React.FC = () => {
             </div>
 
             {/* Estimated Time */}
-            <div className="p-4 rounded-2xl bg-[#FFECE5] border-2 border-[#141414] shadow-brutal-sm flex items-center gap-3.5 text-left">
+            <div className="p-5 rounded-2xl bg-[#FFECE5] border-2 border-[#141414] shadow-brutal-sm flex items-center gap-4 text-left">
               <div className="w-12 h-12 rounded-xl bg-[#FF5722] text-white flex items-center justify-center">
                 <Clock className="w-6 h-6 stroke-[2.5]" />
               </div>
@@ -167,7 +168,7 @@ export const Confirmation: React.FC = () => {
           </div>
 
           {/* Live Kitchen Status Progress Bar */}
-          <div className="pt-6 pb-2 text-left space-y-3">
+          <div className="pt-6 pb-2 text-left space-y-3.5">
             <div className="flex items-center justify-between text-xs font-black uppercase text-[#141414]">
               <span className="flex items-center gap-1.5 text-[#FF5722]">
                 <Flame className="w-4 h-4 fill-[#FF5722] animate-sizzle" />
@@ -219,18 +220,21 @@ export const Confirmation: React.FC = () => {
           </div>
 
           {/* Order Summary Recap */}
-          <div className="text-left pt-4 border-t-3 border-[#141414] space-y-4">
-            <h3 className="font-display text-xl uppercase tracking-wider text-[#141414]">
-              Receipt Line Items
-            </h3>
+          <div className="text-left pt-6 border-t-3 border-[#141414] space-y-5">
+            <div className="flex items-center justify-between">
+              <h3 className="font-display text-xl uppercase tracking-wider text-[#141414]">
+                Receipt Line Items
+              </h3>
+              <BarcodeSVG className="h-6" />
+            </div>
 
             <div className="divide-y-2 divide-dashed divide-stone-200">
               {order.items.map((lineItem) => (
                 <div
                   key={lineItem.cartId}
-                  className="py-3 flex items-center justify-between text-xs sm:text-sm"
+                  className="py-3.5 flex items-center justify-between text-xs sm:text-sm"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3.5">
                     <img
                       src={lineItem.item.image}
                       alt={lineItem.item.name}
@@ -260,7 +264,7 @@ export const Confirmation: React.FC = () => {
             </div>
 
             {/* Price Calculations */}
-            <div className="pt-3 border-t-3 border-[#141414] space-y-1.5 text-xs sm:text-sm font-bold text-stone-700">
+            <div className="pt-4 border-t-3 border-[#141414] space-y-2 text-xs sm:text-sm font-bold text-stone-700">
               <div className="flex justify-between">
                 <span className="uppercase">Subtotal</span>
                 <span className="font-display text-base">${order.subtotal.toFixed(2)}</span>
@@ -281,11 +285,11 @@ export const Confirmation: React.FC = () => {
                   <span>-${order.discount.toFixed(2)}</span>
                 </div>
               )}
-              <div className="pt-2 border-t-2 border-[#141414] flex justify-between items-center">
+              <div className="pt-3 border-t-2 border-[#141414] flex justify-between items-center">
                 <span className="font-display text-lg uppercase text-[#141414]">
                   Total Paid (Mock)
                 </span>
-                <span className="font-display text-2xl text-[#FF5722]">
+                <span className="font-display text-3xl text-[#FF5722]">
                   ${order.total.toFixed(2)}
                 </span>
               </div>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, Bike, Receipt } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { CouponInput } from './CouponInput';
+import { BarcodeSVG } from './BrutalistSVGs';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -74,8 +75,8 @@ export const CartDrawer: React.FC = () => {
                     </h2>
                     <p className="text-[11px] font-black uppercase tracking-widest text-[#141414]/80">
                       {items.length === 0
-                        ? 'Ticket #0000 • Empty'
-                        : `Ticket #0042 • ${items.reduce((s, i) => s + i.quantity, 0)} Items`}
+                        ? 'Ticket No. 0000 / Empty'
+                        : `Ticket No. 0042 / ${items.reduce((s, i) => s + i.quantity, 0)} Items`}
                     </p>
                   </div>
                 </div>
@@ -89,8 +90,8 @@ export const CartDrawer: React.FC = () => {
                 </button>
               </div>
 
-              {/* Items List / Empty State */}
-              <div className="flex-1 overflow-y-auto p-5 space-y-4">
+              {/* Items List / Empty State with generous spacing */}
+              <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 {items.length === 0 ? (
                   <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-4">
                     <div className="w-20 h-20 rounded-3xl bg-white border-3 border-[#141414] shadow-brutal flex items-center justify-center text-stone-400">
@@ -118,7 +119,7 @@ export const CartDrawer: React.FC = () => {
                   items.map((cartItem) => (
                     <div
                       key={cartItem.cartId}
-                      className="p-4 rounded-2xl border-2 border-[#141414] bg-white shadow-brutal flex gap-3.5 transition-all"
+                      className="p-4 rounded-2xl border-2 border-[#141414] bg-white shadow-brutal flex gap-4 transition-all"
                     >
                       {/* Item Thumbnail */}
                       <img
@@ -195,7 +196,7 @@ export const CartDrawer: React.FC = () => {
 
               {/* Bottom Diner Ticket Calculations & Checkout */}
               {items.length > 0 && (
-                <div className="p-5 border-t-3 border-[#141414] bg-white space-y-4">
+                <div className="p-6 border-t-3 border-[#141414] bg-white space-y-4">
                   {/* Coupon section */}
                   <CouponInput />
 
@@ -246,6 +247,11 @@ export const CartDrawer: React.FC = () => {
                         ${total.toFixed(2)}
                       </span>
                     </div>
+                  </div>
+
+                  {/* Retro Vector Barcode Accent */}
+                  <div className="flex justify-center pt-1 opacity-80">
+                    <BarcodeSVG className="h-6" />
                   </div>
 
                   {/* Checkout Button */}
